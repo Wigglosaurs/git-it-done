@@ -1,8 +1,12 @@
+var repoNameEl = document.querySelector("#repo-name");
 var issueContainerEl = document.querySelector("#issues-container");
 var limitWarningEl = document.querySelector("#limit-warning");
 
 var getRepoIssues = function (repo) {
+    // format the github api url
     var apiUrl = "https://api.github.com/repos/" + repo + "/issues?direction=asc";
+
+    // make a get request to url
     fetch(apiUrl).then(function (response) {
         // request was successful
         if (response.ok) {
@@ -22,8 +26,6 @@ var getRepoIssues = function (repo) {
     });
 };
 
-getRepoIssues("facebook/react");
-
 var displayIssues = function (issues) {
     // display message if repository has no issues
     if (issues.length === 0) {
@@ -31,6 +33,7 @@ var displayIssues = function (issues) {
         return;
     }
 
+    // loop over given issues
     for (var i = 0; i < issues.length; i++) {
         // create a link element to take users to the issue on github
         var issueEl = document.createElement("a");
@@ -74,3 +77,5 @@ var displayWarning = function (repo) {
     // append to warning container
     limitWarningEl.appendChild(linkEl);
 };
+
+getRepoIssues("facebook/react");
