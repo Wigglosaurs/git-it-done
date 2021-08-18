@@ -1,7 +1,6 @@
 var repoNameEl = document.querySelector("#repo-name");
 var issueContainerEl = document.querySelector("#issues-container");
 var limitWarningEl = document.querySelector("#limit-warning");
-var repoNameEl = document.querySelector("#repo-name");
 
 var getRepoName = function () {
     // grab repo name from url query string
@@ -19,7 +18,6 @@ var getRepoName = function () {
     }
 };
 
-// I was suppose to pass "repoName" variable into this function. Where will it be?
 var getRepoIssues = function (repo) {
     // format the github api url
     var apiUrl = "https://api.github.com/repos/" + repo + "/issues?direction=asc";
